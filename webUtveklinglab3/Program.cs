@@ -2,17 +2,17 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll",
+//        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+//});
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration["DefaultConnection"]));
 
-builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+//builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // builder.Services.AddControllers();
 // builder.Services.AddEndpointsApiExplorer();
@@ -68,7 +68,7 @@ app.MapPost("/api/projects/bulk", async (ApplicationContext context, List<Projec
     return Results.Ok(new { message = $"{projects.Count} projects added successfully.", data = projects });
 });
 
-app.UseCors("AllowAll");
+//app.UseCors("AllowAll");
 
 app.UseSwagger();
 app.UseSwaggerUI();
