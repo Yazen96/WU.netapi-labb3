@@ -25,13 +25,7 @@ public partial class ApplicationContext : DbContext
 
     public virtual DbSet<Skill> Skills { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-        }
-    }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
