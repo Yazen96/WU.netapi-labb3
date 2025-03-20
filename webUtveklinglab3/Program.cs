@@ -69,6 +69,7 @@ app.MapPost("/api/projects/bulk", async (ApplicationContext context, List<Projec
 });
 
 //app.UseCors("AllowAll");
+app.UseDeveloperExceptionPage();
 
 app.UseSwagger();
 app.UseSwaggerUI();
