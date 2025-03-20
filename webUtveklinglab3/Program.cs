@@ -17,7 +17,6 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 // builder.Services.AddControllers();
 // builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
 app.MapGet("/api/talents", async (ApplicationContext context) =>
@@ -71,9 +70,11 @@ app.MapPost("/api/projects/bulk", async (ApplicationContext context, List<Projec
 //app.UseCors("AllowAll");
 app.UseDeveloperExceptionPage();
 
-app.UseSwagger();
-app.UseSwaggerUI();
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 // app.UseAuthorization();
 
 // app.MapControllers();
